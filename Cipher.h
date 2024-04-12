@@ -13,21 +13,21 @@ public:
    * @param decodedMsg - original message that requires encoding
    * @return true if encode was successful
    */
-  virtual bool encode(const string& decodedMsg) = 0;
+  virtual bool encode(string decodedMsg) = 0;
 
   /*
    * decode(): abstract (pure virtual) function for decoding
    * @param encodedMsg - encoded message that requires decoding
    * @return true if decode was successful
    */
-  virtual bool decode(const string& encodedMsg) = 0;
+  virtual bool decode(string encodedMsg) = 0;
 
   /*
    * isValidCharacter(): abstract helper function (pure virtual) to check if a character is valid for a cipher
    * @param c - character to check
    * @return true if character may be used in the cipher
    */
-  virtual bool isValidCharacter(char c) const = 0;
+  virtual bool isValidCharacter(char c) = 0;
 
   /*
    * getters
