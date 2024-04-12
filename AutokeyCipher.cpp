@@ -24,27 +24,33 @@ bool AutokeyCipher::encode(string decodedMsg) {
 }
 
 bool AutokeyCipher::decode(string encodedMsg) {
-  decoded = "";
-
-  string key = primer;
-
-  for (size_t i = 0; i < encodedMsg.length(); ++i) {
-    char encodedChar = encodedMsg[i];
-    char keyChar = key[i];
-
-    if (isValidCharacter(encodedChar)) {
-      char decodedChar = (encodedChar - keyChar + 26) % 26 + 'A';
-      if (decodedChar < 'A') {
-         decodedChar += 26;
-      }
-        decoded += decodedChar;
-        key += decodedChar;
-      } else {
-        return false;
-      }
+    decoded = "";
+    
+    string key = primer;
+    
+    for (size_t i = 0; i < encodedMsg.length(); ++i) {
+        char encodedChar = encodedMsg[i];
+        char keyChar = key[i];
+        
+        if (isValidCharacter(encodedChar)) {
+            if (encodedChar != ' ') { // Check if the character is not a space
+                char decodedChar = (encodedChar - keyChar + 26) % 26 + 'A';
+                if (decodedChar < 'A') {
+                    decodedChar += 26;
+                }
+                decoded += decodedChar;
+                key += decodedChar;
+            } else {
+                decoded += ' '; // Preserve the space
+                key += ' '; // Add a space to the key
+            }
+        } else {
+            return false;
+        }
     }
-  return true;
+    return true;
 }
+
 
 bool AutokeyCipher::isValidCharacter(char c) {
   return ((c >= 'A') && (c <= 'Z')) || (c == ' ');

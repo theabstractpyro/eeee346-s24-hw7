@@ -1,5 +1,5 @@
 Decoding message using Caesar Cipher decoder!
 Decoded Message is:
-BEGSUREGTOGDRINKGYOURGOVALTINE
+BE SURE TO DRINK YOUR OVALTINE
 Details for Cipher Used:
 Caesar Cipher used a shift of 13
